@@ -1,4 +1,5 @@
 from river import metrics, preprocessing, tree, forest
+from Functions.Result_extractor import result_extractor
 from LoanDataset.Create_loandataset import create_loandataset
 from Functions.Create_Plots import create_plots
 from Functions.Data_plot import data_plot
@@ -52,6 +53,8 @@ if __name__ == "__main__":
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
 
+    result_extractor(2, 1, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
+
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 2
     start_time = time.time()
@@ -67,6 +70,8 @@ if __name__ == "__main__":
     y_predicted.append(y_predicted_temp)
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
+
+    result_extractor(2, 2, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
 
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 3
@@ -84,6 +89,8 @@ if __name__ == "__main__":
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
 
+    result_extractor(2, 3, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
+
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 4
     start_time = time.time()
@@ -99,6 +106,8 @@ if __name__ == "__main__":
     y_predicted.append(y_predicted_temp)
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
+
+    result_extractor(2, 4, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
 
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 5
@@ -116,6 +125,8 @@ if __name__ == "__main__":
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
 
+    result_extractor(2, 5, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
+
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 6
     start_time = time.time()
@@ -131,6 +142,8 @@ if __name__ == "__main__":
     y_predicted.append(y_predicted_temp)
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
+
+    result_extractor(2, 6, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
 
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 7
@@ -148,6 +161,8 @@ if __name__ == "__main__":
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
 
+    result_extractor(2, 7, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
+
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 8
     start_time = time.time()
@@ -164,6 +179,8 @@ if __name__ == "__main__":
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
 
+    result_extractor(2, 8, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
+
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 9
     start_time = time.time()
@@ -179,6 +196,8 @@ if __name__ == "__main__":
     y_predicted.append(y_predicted_temp)
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
+
+    result_extractor(2, 9, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
 
     # Delete the temporal variables
     del y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp

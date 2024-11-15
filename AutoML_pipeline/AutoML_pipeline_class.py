@@ -27,7 +27,7 @@ class AutomlPipeline(base.Classifier):
             self.concept_drift_detector_method = None
 
         # set a buffer size
-        self.buffer_size = 200
+        self.buffer_size = 450
 
         self.k = None  # index for the buffers
 
@@ -116,8 +116,9 @@ class AutomlPipeline(base.Classifier):
                     # I don't start to look for a data drift if there is already detected a concept drift
                     if self.distance_from_last_consept_drift_detected is None:
                         # find the real point of data drift
-                        self.distance_from_last_data_drift_detected = (
-                            self.data_drift_detector[feature]._helper.get_total())
+                        temp_distance = self.data_drift_detector[feature].width
+                        if self.distance_from_last_data_drift_detected is None or temp_distance < self.distance_from_last_data_drift_detected:
+                            self.distance_from_last_data_drift_detected = temp_distance
                         if self.distance_from_last_data_drift_detected > self.buffer_size:
                             self.distance_from_last_data_drift_detected = self.buffer_size
                         self.latest_data_drift_index = self.index
@@ -128,7 +129,7 @@ class AutomlPipeline(base.Classifier):
             if self.distance_from_last_data_drift_detected == self.buffer_size:
                 # check if we have accuracy drop more than 5%
                 self.need_retrain = accuracy_check(self.accuracy, self.y_buffer.get(),
-                                                   self.y_predicted_buffer.get(), 0.05)
+                                                   self.y_predicted_buffer.get(), 0.07)
 
                 if self.need_retrain:
                     print(f"Data drift detected at data point {self.latest_data_drift_index} "
@@ -152,8 +153,10 @@ class AutomlPipeline(base.Classifier):
                 self.concept_drifts.append(self.index)
 
                 # find the real point of concept drift
-                self.distance_from_last_consept_drift_detected = self.concept_drift_detector._helper.get_total()
-
+                self.distance_from_last_consept_drift_detected = self.concept_drift_detector.width
+                if (self.distance_from_last_data_drift_detected is not None and
+                        self.distance_from_last_consept_drift_detected > self.distance_from_last_data_drift_detected):
+                    self.distance_from_last_consept_drift_detected = self.distance_from_last_data_drift_detected
                 if self.distance_from_last_consept_drift_detected > self.buffer_size:
                     self.distance_from_last_consept_drift_detected = self.buffer_size
 
@@ -174,8 +177,7 @@ class AutomlPipeline(base.Classifier):
                 buffer_accuracy.update(self.y_buffer.get_specific(j), self.y_predicted_buffer.get_specific(j))
 
             self.pipeline, self.accuracy, self.data_drift_detector, self.concept_drift_detector \
-                = change_pipeline(self.pipeline, self.x_buffer.get(), self.y_buffer.get(), self.data_drift_detector,
-                                  self.concept_drift_detector, self.data_drift_detector_method,
+                = change_pipeline(self.pipeline, self.x_buffer.get(), self.y_buffer.get(), self.data_drift_detector_method,
                                   self.concept_drift_detector_method, buffer_accuracy)
 
             self.distance_from_last_data_drift_detected = None

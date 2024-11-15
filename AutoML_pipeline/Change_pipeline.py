@@ -2,8 +2,8 @@ from AutoML_pipeline.Find_best_pipeline_ProcessPoolExecutor import find_best_pip
 # from AutoML_pipeline.Find_best_pipeline import find_best_pipeline
 
 
-def change_pipeline(pipeline_old, x_train, y_train, data_drift_detectors_old, concept_drift_detector_old,
-                    data_drift_detector_method, concept_drift_detector_method, buffer_accuracy):
+def change_pipeline(pipeline_old, x_train, y_train, data_drift_detector_method, concept_drift_detector_method,
+                    buffer_accuracy):
     """
         Train an AutoMl pipeline to use later for predictions
 
@@ -11,8 +11,6 @@ def change_pipeline(pipeline_old, x_train, y_train, data_drift_detectors_old, co
             pipeline_old: the old classifier
             x_train: data with features values
             y_train: data with targets values
-            data_drift_detectors_old:  the old pipeline's data drift detectors
-            concept_drift_detector_old:  the old pipeline's consept drift detector
             data_drift_detector_method: the data drift detection method
             concept_drift_detector_method: the consept drift detection method
             buffer_accuracy: the accuracy of the old model in the buffer
@@ -45,7 +43,7 @@ def change_pipeline(pipeline_old, x_train, y_train, data_drift_detectors_old, co
         print("Keep the old pipeline: \n", pipeline_old)
 
         (pipeline, accuracy, data_drift_detectors, concept_drift_detector) =\
-            (pipeline_old, accuracy_old, data_drift_detectors_old, concept_drift_detector_old)
+            (pipeline_old, accuracy_old, data_drift_detectors_new, concept_drift_detector_new)
 
     print("", accuracy)
 

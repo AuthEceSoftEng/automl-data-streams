@@ -1,6 +1,5 @@
 import pandas as pd
 from river import metrics, preprocessing, tree, forest, datasets
-
 from Functions.Comparison_with_OAML_basic_plot import compare_with_oaml
 from Functions.Create_Plots import create_plots
 from Functions.Data_plot import data_plot
@@ -9,6 +8,7 @@ from Functions.Evaluation_sliding_window import evaluation
 from AutoML_pipeline.AutoML_Usage import use_automl
 import time
 
+from Functions.Result_extractor import result_extractor
 
 """
 
@@ -46,6 +46,8 @@ if __name__ == "__main__":
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
 
+    result_extractor(4, 1, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
+
     print("-----------------------------------------------------------------------------------------------------------")
     # pipeline 2
     start_time = time.time()
@@ -61,6 +63,8 @@ if __name__ == "__main__":
     y_predicted.append(y_predicted_temp)
     data_drifts.append(data_drifts_temp)
     concept_drifts.append(concept_drifts_temp)
+
+    result_extractor(4, 2, y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp)
 
     # Delete the temporal variables
     del y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp
