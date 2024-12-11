@@ -155,9 +155,7 @@ class LoanDataset(datasets.base.SyntheticDataset):
         if loan > 0.9 * housevalue:
             return 0
 
-        if 35 < age < 45 and loan/loanyears < salaryvar/15 and salaryvar >= 9000:
-            return 1
-        elif age < 40 and salaryvar >= 15000:
+        if age < 40 and salaryvar >= 15000:
             return 2
         elif age < 20 and salaryvar >= 10000:
             return 1
@@ -181,12 +179,8 @@ class LoanDataset(datasets.base.SyntheticDataset):
         if loan > 0.7 * housevalue:
             return 0
 
-        if 35 < age < 45 and loan/loanyears < salaryvar/15 and salaryvar >= 18000:
-            return 1
-        elif age < 40 and salaryvar >= 25000:
+        if age < 40 and salaryvar >= 25000:
             return 2
-        elif age < 20 and salaryvar >= 20000:
-            return 1
         elif age < 50 and salaryvar >= 30000 and 0.5*housevalue <= loan:
             return 1
         elif age < 50 and salaryvar >= 30000:
@@ -207,9 +201,7 @@ class LoanDataset(datasets.base.SyntheticDataset):
         if loan > 0.5 * housevalue:
             return 0
 
-        if 35 < age < 45 and loan/loanyears < salaryvar/15 and salaryvar >= 25000:
-            return 1
-        elif age < 40 and salaryvar >= 40000:
+        if age < 40 and salaryvar >= 40000:
             return 2
         elif age < 20 and salaryvar >= 30000:
             return 1
