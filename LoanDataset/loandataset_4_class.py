@@ -198,8 +198,6 @@ class LoanDataset(datasets.base.SyntheticDataset):
             return 1
         elif age < 40 and salaryvar >= 25000:
             return 3
-        elif age < 40 and salaryvar >= 26000:
-            return 2
         elif age < 50 and salaryvar >= 25000:
             return 2
         elif age < 60 and 27000 <= salaryvar <= 36000:
