@@ -158,27 +158,23 @@ class LoanDataset(datasets.base.SyntheticDataset):
         if loan > 0.9 * housevalue:
             return 0
 
-        if age < 20 and salaryvar >= 20000:
-            return 2
-        elif age < 20 and salaryvar >= 10000:
-            return 1
-        elif age < 40 and salaryvar >= 21000:
+        if age < 40 and salaryvar >= 16000:
             return 3
-        elif age < 40 and salaryvar >= 15000:
+        elif age < 40 and salaryvar >= 13000:
             return 2
-        elif age < 50 and 15000 <= salaryvar <= 25000 and loan < 0.7 * housevalue:
+        elif age < 40 and salaryvar >= 10000:
+            return 1
+        elif age < 50 and salaryvar >= 20000:
+            return 3
+        elif age < 50 and salaryvar >= 16000:
             return 2
-        elif age < 60 and 25000 <= salaryvar <= 35000:
-            return 2
+        elif age < 50 and salaryvar >= 14000:
+            return 1
         elif age < 65 and salaryvar >= 35000:
             return 3
-        elif age < 63 and salaryvar >= 26000:
+        elif age < 65 and salaryvar >= 29000:
             return 2
-        elif age < 47 and salaryvar >= 12000:
-            return 1
-        elif age < 65 and salaryvar >= 20000:
-            return 1
-        elif age < 30 and salaryvar >= 10000:
+        elif age < 65 and salaryvar >= 23000:
             return 1
         else:
             return 0
@@ -192,29 +188,26 @@ class LoanDataset(datasets.base.SyntheticDataset):
         if loan > 0.7 * housevalue:
             return 0
 
-        if age < 20 and salaryvar >= 25000:
-            return 2
-        elif age < 20 and salaryvar >= 20000:
-            return 1
-        elif age < 40 and salaryvar >= 25000:
+        if age < 40 and salaryvar >= 26000:
             return 3
-        elif age < 50 and 21000 <= salaryvar <= 27000 and loan < 0.55 * housevalue:
+        elif age < 40 and salaryvar >= 23000:
             return 2
-        elif age < 60 and 27000 <= salaryvar <= 45000:
+        elif age < 40 and salaryvar >= 19000:
+            return 1
+        elif age < 50 and salaryvar >= 31000:
+            return 3
+        elif age < 50 and salaryvar >= 27000:
             return 2
+        elif age < 50 and salaryvar >= 23000:
+            return 1
         elif age < 65 and salaryvar >= 45000:
             return 3
-        elif age < 63 and salaryvar >= 36000:
+        elif age < 65 and salaryvar >= 40000:
             return 2
-        elif age < 47 and salaryvar >= 20000:
-            return 1
-        elif age < 65 and salaryvar >= 28000:
-            return 1
-        elif age < 30 and salaryvar >= 17000:
+        elif age < 65 and salaryvar >= 35000:
             return 1
         else:
             return 0
-
 
     def _classification_function_crisis(self, salary, commission, age, educationlevel, zipcode, housevalue, loanyears, loan):  # @UnusedVariable
         salaryvar = salary # this is the expected salary
@@ -225,25 +218,23 @@ class LoanDataset(datasets.base.SyntheticDataset):
         if loan > 0.5 * housevalue:
             return 0
 
-        if age < 20 and salaryvar >= 40000:
-            return 2
-        elif age < 20 and salaryvar >= 30000:
-            return 1
-        elif age < 40 and salaryvar >= 40000:
+        if age < 40 and salaryvar >= 41000:
             return 3
-        elif age < 55 and 32000 <= salaryvar <= 45000 and loan < 0.35 * housevalue:
+        elif age < 40 and salaryvar >= 36000:
             return 2
-        elif age < 60 and 45000 <= salaryvar <= 60000:
+        elif age < 40 and salaryvar >= 32000:
+            return 1
+        elif age < 50 and salaryvar >= 50000:
+            return 3
+        elif age < 50 and salaryvar >= 44000:
             return 2
+        elif age < 50 and salaryvar >= 38000:
+            return 1
         elif age < 65 and salaryvar >= 60000:
             return 3
-        elif age < 63 and salaryvar >= 50000:
+        elif age < 65 and salaryvar >= 53000:
             return 2
-        elif age < 47 and salaryvar >= 29000:
-            return 1
-        elif age < 65 and salaryvar >= 35000:
-            return 1
-        elif age < 30 and salaryvar >= 27000:
+        elif age < 65 and salaryvar >= 45000:
             return 1
         else:
             return 0
