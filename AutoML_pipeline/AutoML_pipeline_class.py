@@ -11,9 +11,9 @@ import time
 
 class AutomlPipeline(base.Classifier):
 
-    def __init__(self, target, data_drift_detector, concept_drift_detector):
+    def __init__(self, target, data_drift_detector, concept_drift_detector, seed: int | None = None):
         self.target = target
-
+        self.seed = seed
         if data_drift_detector:
             self.data_drift_detector_method = drift.ADWIN()
 
@@ -87,7 +87,7 @@ class AutomlPipeline(base.Classifier):
         # find the best pipeline
 
         self.pipeline, _, self.data_drift_detector, self.concept_drift_detector = (
-            find_best_pipeline(x_train, y_train, self.data_drift_detector_method, self.concept_drift_detector_method))
+            find_best_pipeline(x_train, y_train, self.data_drift_detector_method, self.concept_drift_detector_method, self.seed))
 
         end_time = time.time()
         total_training_time = end_time - start_time
@@ -178,7 +178,7 @@ class AutomlPipeline(base.Classifier):
 
             self.pipeline, self.accuracy, self.data_drift_detector, self.concept_drift_detector \
                 = change_pipeline(self.pipeline, self.x_buffer.get(), self.y_buffer.get(), self.data_drift_detector_method,
-                                  self.concept_drift_detector_method, buffer_accuracy)
+                                  self.concept_drift_detector_method, buffer_accuracy, self.seed)
 
             self.distance_from_last_data_drift_detected = None
             self.distance_from_last_consept_drift_detected = None

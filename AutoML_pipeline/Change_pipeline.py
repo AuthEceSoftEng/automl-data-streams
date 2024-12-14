@@ -3,7 +3,7 @@ from AutoML_pipeline.Find_best_pipeline_ProcessPoolExecutor import find_best_pip
 
 
 def change_pipeline(pipeline_old, x_train, y_train, data_drift_detector_method, concept_drift_detector_method,
-                    buffer_accuracy):
+                    buffer_accuracy, seed: int | None = None):
     """
         Train an AutoMl pipeline to use later for predictions
 
@@ -14,6 +14,7 @@ def change_pipeline(pipeline_old, x_train, y_train, data_drift_detector_method, 
             data_drift_detector_method: the data drift detection method
             concept_drift_detector_method: the consept drift detection method
             buffer_accuracy: the accuracy of the old model in the buffer
+            seed: Random seed for reproducibility
 
         returns:
             pipeline: the trained pipeline
@@ -24,7 +25,7 @@ def change_pipeline(pipeline_old, x_train, y_train, data_drift_detector_method, 
 
     # find the best pipeline
     pipeline_new, accuracy_new, data_drift_detectors_new, concept_drift_detector_new = (
-        find_best_pipeline(x_train, y_train, data_drift_detector_method, concept_drift_detector_method))
+        find_best_pipeline(x_train, y_train, data_drift_detector_method, concept_drift_detector_method, seed))
 
     # create the instance of metric
     accuracy_old = buffer_accuracy

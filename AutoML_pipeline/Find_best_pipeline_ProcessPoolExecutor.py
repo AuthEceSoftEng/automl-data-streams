@@ -42,7 +42,8 @@ def pipeline_test(model, preprocessor, feature_selector, x_train, y_train):
         return None
 
 
-def find_best_pipeline(x_train, y_train, data_drift_detector_method, concept_drift_detector_method):
+def find_best_pipeline(x_train, y_train, data_drift_detector_method, concept_drift_detector_method, seed: int | None = None):
+    random.seed(seed)
     preprocessors = [None, preprocessing.StandardScaler(),
                      preprocessing.MinMaxScaler()]  # preprocessing.AdaptiveStandardScaler(), preprocessing.Normalizer()
 
@@ -93,13 +94,13 @@ def find_best_pipeline(x_train, y_train, data_drift_detector_method, concept_dri
                      [1e-07, 1e-06, 1e-05]]
 
     HoeffdingAdaptiveTreeClassifier = [tree.HoeffdingAdaptiveTreeClassifier(grace_period=grace_period,
-                                                                            delta=delta)
+                                                                            delta=delta, seed = seed)
                                        for grace_period in [50, 100, 200] for delta in
                                        [1e-07, 1e-06, 1e-05]]  
 
-    AMFClassifier = [forest.AMFClassifier(n_estimators=n_estimators) for n_estimators in [5, 10, 15]]
+    AMFClassifier = [forest.AMFClassifier(n_estimators=n_estimators, seed = seed) for n_estimators in [5, 10, 15]]
 
-    ARFClassifier = [forest.ARFClassifier(n_models=n_models) for n_models in [5, 10, 15]]
+    ARFClassifier = [forest.ARFClassifier(n_models=n_models, seed = seed) for n_models in [5, 10, 15]]
 
     models = []
 

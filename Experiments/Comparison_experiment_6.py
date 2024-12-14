@@ -15,9 +15,8 @@ from Functions.Result_extractor import result_extractor
 
 """
 if __name__ == "__main__":
-
+    seed = 30
     # Load dataset
-
     data = prepare_data('../More_datasets/Airlines.csv')
 
     # set the target name
@@ -33,7 +32,7 @@ if __name__ == "__main__":
     # pipeline 1
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        use_automl(data, target, False, True))
+        use_automl(data, target, False, True, seed = seed))
 
     finish_time = time.time()
     total_time = finish_time - start_time
@@ -51,7 +50,7 @@ if __name__ == "__main__":
     # pipeline 2
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        use_automl(data, target, True, True))
+        use_automl(data, target, True, True, seed = seed))
 
     finish_time = time.time()
     total_time = finish_time - start_time

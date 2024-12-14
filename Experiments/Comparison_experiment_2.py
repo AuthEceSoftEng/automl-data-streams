@@ -16,7 +16,7 @@ import time
 
 """
 if __name__ == "__main__":
-
+    seed = 30
     # create dataset
     data = create_loandataset(3, datalimit=20000,
                               conceptdriftpoints={2500: "growth", 4000: "crisis",
@@ -27,7 +27,7 @@ if __name__ == "__main__":
                                                8000: "normal", 9000: "crisis",
                                                12000: "growth", 14000: "crisis",
                                                16000: "normal"},
-                              seed=42)
+                              seed=seed)
 
     # set the target name
     target = 'y'
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     # pipeline 1
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        simple_pipeline(tree.HoeffdingAdaptiveTreeClassifier(), None, None, data, target))
+        simple_pipeline(tree.HoeffdingAdaptiveTreeClassifier(seed = seed), None, None, data, target))
 
     finish_time = time.time()
     total_time = finish_time - start_time
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     # pipeline 2
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        simple_pipeline(tree.HoeffdingAdaptiveTreeClassifier(), preprocessing.StandardScaler, None, data, target))
+        simple_pipeline(tree.HoeffdingAdaptiveTreeClassifier(seed = seed), preprocessing.StandardScaler, None, data, target))
 
     finish_time = time.time()
     total_time = finish_time - start_time
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     # pipeline 7
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        simple_pipeline(forest.AMFClassifier(), None, None, data, target))
+        simple_pipeline(forest.AMFClassifier(seed = seed), None, None, data, target))
 
     finish_time = time.time()
     total_time = finish_time - start_time
@@ -167,7 +167,7 @@ if __name__ == "__main__":
     # pipeline 8
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        simple_pipeline(forest.AMFClassifier(), preprocessing.StandardScaler, None, data, target))
+        simple_pipeline(forest.AMFClassifier(seed = seed), preprocessing.StandardScaler, None, data, target))
 
     finish_time = time.time()
     total_time = finish_time - start_time
@@ -185,7 +185,7 @@ if __name__ == "__main__":
     # pipeline 9
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        use_automl(data, target, True, True))
+        use_automl(data, target, True, True, seed = seed))
 
     finish_time = time.time()
     total_time = finish_time - start_time

@@ -2,9 +2,9 @@ from AutoML_pipeline.AutoML_pipeline_class import AutomlPipeline
 from Functions.Split_data import split_data
 
 
-def use_automl(data, target, data_drift_detector, consept_drift_detector):
+def use_automl(data, target, data_drift_detector, consept_drift_detector, seed: int | None = None):
 
-    pipeline = AutomlPipeline(target, data_drift_detector, consept_drift_detector)
+    pipeline = AutomlPipeline(target, data_drift_detector, consept_drift_detector, seed)
 
     pipeline.init_train(data[:pipeline.buffer_size])
 
