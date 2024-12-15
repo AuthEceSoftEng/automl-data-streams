@@ -1,7 +1,6 @@
 from river.metrics import Accuracy
 from AutoML_pipeline.Change_pipeline import change_pipeline
 from AutoML_pipeline.Find_best_pipeline_ProcessPoolExecutor import find_best_pipeline
-# from AutoML_pipeline.Find_best_pipeline import find_best_pipeline
 from Functions.Accuracy_check import accuracy_check
 from Functions.Split_data import split_data
 from river import base, drift
