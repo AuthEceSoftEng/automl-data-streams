@@ -1,6 +1,5 @@
 from river import preprocessing, feature_selection, stats
 import copy
-import copy
 import random
 from river import compose
 from river import linear_model, naive_bayes, neighbors, tree, metrics, forest
