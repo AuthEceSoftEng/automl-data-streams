@@ -6,7 +6,7 @@ from river import metrics
 import matplotlib.pyplot as plt
 from Functions.Evaluation import evaluation
 
-imagespath = r"images"
+imagespath = r"SET_THIS"
 
 
 """ GATHER ALL THE DATA """
