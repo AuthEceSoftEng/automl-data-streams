@@ -1,6 +1,6 @@
 from river.metrics import Accuracy
-from AutoML_pipeline.Change_pipeline import change_pipeline
-from AutoML_pipeline.Find_best_pipeline_ProcessPoolExecutor import find_best_pipeline
+from AML4S.Change_pipeline import change_pipeline
+from AML4S.Find_best_pipeline import find_best_pipeline
 from Functions.Accuracy_check import accuracy_check
 from Functions.Split_data import split_data
 from river import base, drift
@@ -8,7 +8,7 @@ from Functions.Sliding_Window_Class import SlidingWindow
 import time
 
 
-class AutomlPipeline(base.Classifier):
+class AML4S(base.Classifier):
 
     def __init__(self, target, data_drift_detector, concept_drift_detector, seed: int | None = None):
         self.target = target

@@ -4,8 +4,8 @@ from Functions.Comparison_with_OAML_basic_plot import compare_with_oaml
 from Functions.Create_Plots import create_plots
 from Functions.Data_plot import data_plot
 from Functions.Prepare_data import prepare_data
-from Functions.Evaluation_sliding_window import evaluation
-from AutoML_pipeline.AutoML_Usage import use_automl
+from Functions.Evaluation import evaluation
+from AML4S.AML4S_Usage import use_AML4S
 import time
 from Functions.Result_extractor import result_extractor
 
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     # pipeline 1
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        use_automl(data, target, False, True, seed = seed))
+        use_AML4S(data, target, False, True, seed = seed))
 
     finish_time = time.time()
     total_time = finish_time - start_time
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # pipeline 2
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        use_automl(data, target, True, True, seed = seed))
+        use_AML4S(data, target, True, True, seed = seed))
 
     finish_time = time.time()
     total_time = finish_time - start_time

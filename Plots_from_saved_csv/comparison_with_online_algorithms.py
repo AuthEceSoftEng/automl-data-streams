@@ -3,9 +3,9 @@ import pickle
 import pandas as pd
 from river import metrics
 import matplotlib.pyplot as plt
-from Functions.Evaluation_sliding_window import evaluation
+from Functions.Evaluation import evaluation
 
-imagespath = r"SET_THIS"
+imagespath = r"images"
 
 
 """ GATHER ALL THE DATA """

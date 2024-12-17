@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from LoanDataset.loandataset_2_class import LoanDataset
 
-imagespath = r"SET_THIS"
+imagespath = r"images"
 
 ## CREATE DATASET
 # Number of data instances
@@ -19,7 +19,7 @@ datadriftpoints={2000: "crisis", 6000: "growth",
                                                16000: "normal"}
 
 # Load loan dataset
-dataset = LoanDataset(seed=42)
+dataset = LoanDataset(seed=30)
 
 # Have a look at the data (note that data are a stream, so this "view"
 # should not be given to the algorithms, it is only for intuition purposes)

@@ -1,4 +1,4 @@
-from AutoML_pipeline.Find_best_pipeline_ProcessPoolExecutor import find_best_pipeline
+from AML4S.Find_best_pipeline import find_best_pipeline
 
 
 def change_pipeline(pipeline_old, x_train, y_train, data_drift_detector_method, concept_drift_detector_method,

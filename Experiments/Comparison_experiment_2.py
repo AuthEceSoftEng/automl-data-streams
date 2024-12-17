@@ -4,9 +4,9 @@ from LoanDataset.Create_loandataset import create_loandataset
 from Functions.Create_Plots import create_plots
 from Functions.Data_plot import data_plot
 from Simple_pipeline.Simple_pipeline_use import simple_pipeline
-from Functions.Evaluation_sliding_window import evaluation
+from Functions.Evaluation import evaluation
 from river import linear_model
-from AutoML_pipeline.AutoML_Usage import use_automl
+from AML4S.AML4S_Usage import use_AML4S
 import time
 
 
@@ -185,7 +185,7 @@ if __name__ == "__main__":
     # pipeline 9
     start_time = time.time()
     y_real_temp, y_predicted_temp, data_drifts_temp, concept_drifts_temp = (
-        use_automl(data, target, True, True, seed = seed))
+        use_AML4S(data, target, True, True, seed = seed))
 
     finish_time = time.time()
     total_time = finish_time - start_time

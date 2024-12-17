@@ -1,11 +1,11 @@
 import pandas as pd
 from river import metrics
 from Functions.Create_Plots import create_plots
-from Functions.Evaluation_sliding_window import evaluation
+from Functions.Evaluation import evaluation
 
 def take_saved_data(file_name):
 
-    df = pd.read_csv(f'../Experiments/Results/450/{file_name}')
+    df = pd.read_csv(f'../Experiments/Results/{file_name}')
     df = df.replace({'True': 1, 'False': 0})
     df = df.apply(pd.to_numeric, errors='coerce')
     y_real=df.iloc[:, 0].tolist()
