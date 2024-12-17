@@ -12,24 +12,24 @@ This repository contains a loan data stream generator and a fully automated onli
   - [Usage](#usage) 
   - [Example](#example)
 - [Function Details](#function-details)
-  - [AML4S](#uaml4s_classu) 
+  - [AML4S](#aml4s_class) 
     - [\_\_init__](#__init__)
     - [init_train](#init_train)
     - [predict_one](#predict_one)
     - [learn_one](#learn_one)
-  - [use_AML4S](#uuse_aml4su)
-  - [find_best_pipeline](#ufind_best_pipelineu)
-  - [change_pipeline](#uchange_pipelineu)
-  - [simple_pipeline](#usimple_pipelineu)
-  - [Conver_arf_to_csv file](#uconvert_arff_to_csv-fileu)
-  - [create_loandataset](#ucreate_loandatasetu)
-  - [prepare_data](#uprepare_datau)
-  - [evaluation](#uevaluationu)
-  - [create_plots](#ucreate_plotsu)
-  - [Comparison_with_OAML](#ucomparison_with_oamlu)
-  - [data_plot](#udata_plotu)
-  - [accuracy_check](#uaccuracy_checku)
-  - [split_data](#usplit_datau)
+  - [use_AML4S](#use_aml4s)
+  - [find_best_pipeline](#find_best_pipeline)
+  - [change_pipeline](#change_pipeline)
+  - [simple_pipeline](#simple_pipeline)
+  - [Conver_arf_to_csv file](#convert_arff_to_csv-file)
+  - [create_loandataset](#create_loandataset)
+  - [prepare_data](#prepare_data)
+  - [evaluation](#evaluation)
+  - [create_plots](#create_plots)
+  - [Comparison_with_OAML](#comparison_with_oaml)
+  - [data_plot](#data_plot)
+  - [accuracy_check](#accuracy_check)
+  - [split_data](#split_data)
 - [Dataset](#dataset)
 
 ## Manual
@@ -62,7 +62,7 @@ Some good examples of how to use all the functions are included in the `Exeperim
 
 ## Function Details
 
-### <u>AML4S_class</u>
+### AML4S_class
 
 - **File:** [`AML4S_class.py`](AML4S/AML4S_class.py)
 - **Description:** Contains the functions and the parameters of the AML4S object. 
@@ -130,8 +130,8 @@ learn_one(self, x, y)
 
 - `x` (dict): Sample of data with the features.
 - `y` (int): Predicted target values.
-
-### <u>use_AML4S</u>
+---
+### use_AML4S
 
 - **File:** [`AML4S_Usage.py`](AML4S/AML4S_Usage.py)
 - **Description:** Executes the AutoML pipeline on the provided dataset, including data drift and concept drift detection.
@@ -155,8 +155,8 @@ use_AML4S(data, target, data_drift_detector, consept_drift_detector)
 - `y_pred` (list): Predicted target values.
 - `pipeline.data_drifts` (list): Detected data drifts.
 - `pipeline.concept_drifts` (list): Detected concept drifts.
-
-### <u>find_best_pipeline</u>
+---
+### find_best_pipeline
 
 - **File:** [`Find_best_pipeline.py`](AML4S/Find_best_pipeline.py)
 - **Description:** Finds the best-performing pipeline among various models and configurations, using data and concept drift detection methods.
@@ -180,8 +180,8 @@ find_best_pipeline(x_train, y_train, data_drift_detector_method, concept_drift_d
 - `accuracy` (object): The accuracy of the selected pipeline.
 - `data_drift_detectors` (object): Data drift detectors used in the selected pipeline.
 - `concept_drift_detector` (object): The concept drift detector used in the selected pipeline.
-
-### <u>change_pipeline</u>
+---
+### change_pipeline
 
 - **File:** [`Change_pipeline.py`](AML4S/Change_pipeline.py)
 - **Description:** Trains and evaluates a new AutoML pipeline, selecting it if it performs better than the current one.
@@ -209,8 +209,8 @@ change_pipeline(pipeline_old, x_train, y_train, data_drift_detectors_old, concep
 - `accuracy` (object): The accuracy of the selected pipeline.
 - `data_drift_detectors` (object): The data drift detectors used in the selected pipeline.
 - `concept_drift_detector` (object): The concept drift detector used in the selected pipeline.
-
-### <u>simple_pipeline</u>
+---
+### simple_pipeline
 
 - **File:** [`Simple_pipeline_use.py`](Simple_pipeline/Simple_pipeline_use.py)
 - **Description:** Constructs a simple machine learning pipeline using a model, an optional preprocessor, and an optional feature selector. It then trains and evaluates the pipeline on the provided dataset.
@@ -236,8 +236,8 @@ simple_pipeline(model, preprocessor, feature_selector, data, target)
 - `data_drifts` (list): A placeholder list, empty in this implementation.
 - `concept_drifts` (list): A placeholder list, empty in this implementation.
 
-
-### <u>Convert_arff_to_csv file</u>
+---
+### Convert_arff_to_csv file
 - **File:** [`Convert_arff_to_csv`](More_datasets/Convert_arff_to_csv.py)
 - **Description:** File converter from arff to csv.
  
@@ -254,8 +254,8 @@ convert_arff_to_csv('arff_name.arff', 'csv_name.csv')
 
 #### Output:
 - saved vsc file
-
-### <u>create_loandataset</u>
+---
+### create_loandataset
 
 - **File:** [`Create_loandataset.py`](LoanDataset/Create_loandataset.py)
 - **Description:** Creates a loan dataset with specified drifts.
@@ -277,8 +277,8 @@ create_loandataset(class_num, datalimit, conceptdriftpoints, datadriftpoints, se
 #### Output:
 
 - `data` (list[dict]): List of dictionaries containing the created dataset.
-
-### <u>prepare_data</u>
+---
+### prepare_data
 
 - **File:** [`Prepare_data.py`](Functions/Data_plot.py)
 - **Description:** Prepares the dataset for the pipeline.
@@ -296,8 +296,8 @@ prepare_data(dataset)
 #### Output:
 
 - `data` (list[dict]): List of dictionaries with the dataset's data.
-
-### <u>evaluation</u>
+---
+### evaluation
 
 - **File:** [`Evaluation.py`](Functions/Evaluation.py)
 - **Description:** Evaluates the pipelines created.
@@ -317,8 +317,8 @@ evaluation(y_real, y_predicted, metric_algorithm)
 #### Output:
 
 - `results` (list[list]): Evaluation results for each pipeline.
-
-### <u>create_plots</u>
+---
+### create_plots
 
 - **File:** [`Create_Plots.py`](Functions/Create_Plots.py)
 - **Description:** Creates plots for the evaluation metrics of each pipeline.
@@ -338,8 +338,8 @@ create_plots(evaluates, data_drifts, concept_drifts)
 #### Output:
 
 - Plot of the metric we used in evaluation for all pipelines used.
-
-### <u>comparison_with_oaml</u>
+---
+### comparison_with_oaml
 
 - **File:** [`Comparison_with_OAML_basic_plot.py`](Functions/Comparison_with_OAML_basic_plot.py)
 - **Description:** Creates plots in same figure to compare metric results of some methods with OAML-basic.  
@@ -357,8 +357,8 @@ compare_with_oaml(results)
 #### Output:
 
 - Figure with the metric plot of every method.
-
-### <u>data_plot</u>
+---
+### data_plot
 
 - **File:** [`Data_plot.py`](Functions/Data_plot.py)
 - **Description:** Creates plots for dataset features.
@@ -377,8 +377,8 @@ data_plot(data, step)
 #### Output:
 
 - Plots of each feature in the dataset.
-
-### <u>accuracy_check</u>
+---
+### accuracy_check
 
 - **File:** [`Accuracy_check.py`](Functions/Accuracy_check.py)
 - **Description:** Compares accuracy against a mean accuracy to decide if a model retrain is needed.
@@ -398,8 +398,8 @@ accuracy_check(mean_accuracy, y_true_buffer, y_predicted_buffer)
 #### Output:
 
 - `need_change` (boolean): Indicates if the accuracy difference exceeds a threshold.
-
-### <u>split_data</u>
+---
+### split_data
 
 - **File:** [`Split_data.py`](Functions/Split_data.py)
 - **Description:** Splits the data into features and target.
@@ -420,7 +420,7 @@ split_data(dictionary, target_key)
 1. `features` (dict): Features of the input sample.
 2. `target` : Target value of the sample.
 
-### <u>
+
 
 ## Dataset
 
