@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from LoanDataset.loandataset_2_class import LoanDataset
 
-imagespath = r"images"
+imagespath = r"SET_THIS"
 
 ## CREATE DATASET
 # Number of data instances
