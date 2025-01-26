@@ -137,7 +137,7 @@ print(results.to_latex(index=False))
 
 """ CREATE PLOTS """
 for experiment_no in ('adult','covtype'):
-    experiment_name = str(experiment_no ) + "classes"
+    experiment_name = str(experiment_no ) + "dataset"
 
     with open('data' + str(experiment_no) + '.pkl', 'rb') as f:
         evaluates, data_drifts, concept_drifts = pickle.load(f)
