@@ -144,7 +144,7 @@ for experiment_no in range(1, 4):
     
     fig, ax = plt.subplots(figsize=(9, 3.2))
     
-    ax.plot(results[0], label = "AML4S", color = "#1f77b4", linestyle = "solid")
+    ax.plot(results[-1], label = "AML4S", color = "#1f77b4", linestyle = "solid")
     
     ax.vlines(concept_drifts, ymin = 0, ymax = 1, label = "Concept drifts", color = "gray", linestyle = "dashed")
     ax.vlines(data_drifts, ymin = 0, ymax = 1, label = "Data drifts", color = "gray", linestyle = "dotted", linewidth=1.75)
