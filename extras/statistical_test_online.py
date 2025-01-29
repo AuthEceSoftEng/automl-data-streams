@@ -22,9 +22,9 @@ def wilcoxon_test(pipeline_to_compare):
     y_real = []
     y_predicted = []
 
-    for experiment_no in (1, 2, 3, 'adult', 'covtype'):
+    for experiment_no in (1, 2, 3, 'covtype', 'rialto'):
         folder = 'Experiments'
-        if experiment_no in ('adult', 'covtype'):
+        if experiment_no not in (1, 2, 3):
             folder = 'extras'
         # take the results of the pipeline 1
         y_real_temp, y_predicted_temp, _, _ = take_saved_data(f"../{folder}/Results/experiment{experiment_no}_pipeline9_results.csv")
@@ -64,4 +64,11 @@ def wilcoxon_test(pipeline_to_compare):
     print("p-value: " + str(s.pvalue))
     print("z Statistic: " + str(s.zstatistic))
 
+wilcoxon_test(1)
+wilcoxon_test(2)
+wilcoxon_test(3)
+wilcoxon_test(4)
+wilcoxon_test(5)
+wilcoxon_test(6)
 wilcoxon_test(7)
+wilcoxon_test(8)
