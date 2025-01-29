@@ -8,7 +8,7 @@ from Functions.Evaluation import evaluation
 imagespath = r"SET_THIS"
 
 """ GATHER ALL THE DATA """
-for experiment_no in ('adult','covtype'):
+for experiment_no in ('covtype', 'rialto'):
     if not os.path.exists('data' + str(experiment_no) + '.pkl'):
         def take_saved_data(file_name):
             df = pd.read_csv(f'../extras/Results/{file_name}')
@@ -123,7 +123,7 @@ pipelines = ["Hoeffding Adaptive Tree", "Hoeffding Adaptive Tree (S)", \
 results = []
 for i, pipeline in enumerate(pipelines):
     res = [pipeline]
-    for experiment_no in ('adult','covtype'):
+    for experiment_no in ('covtype', 'rialto'):
         with open('data' + str(experiment_no) + '.pkl', 'rb') as f:
             evaluates, data_drifts, concept_drifts = pickle.load(f)
             if i == len(pipelines) - 1:
@@ -132,11 +132,11 @@ for i, pipeline in enumerate(pipelines):
                 res.append("%.2f\\%%" % (100 * evaluates[1][i][-1]))
     results.append(res)
 
-results = pd.DataFrame(results, columns=["Algorithm", "adult", "covtype"])
+results = pd.DataFrame(results, columns=["Algorithm", "covtype", "rialto"])
 print(results.to_latex(index=False))
 
 """ CREATE PLOTS """
-for experiment_no in ('adult','covtype'):
+for experiment_no in ('covtype', 'rialto'):
     experiment_name = str(experiment_no ) + "dataset"
 
     with open('data' + str(experiment_no) + '.pkl', 'rb') as f:
@@ -149,7 +149,7 @@ for experiment_no in ('adult','covtype'):
 
     fig, ax = plt.subplots(figsize=(9, 3.2))
 
-    ax.plot(results[0], label="AML4S", color="#1f77b4", linestyle="solid")
+    ax.plot(results[-1], label="AML4S", color="#1f77b4", linestyle="solid")
 
     ax.vlines(concept_drifts, ymin=0, ymax=1, label="Concept drifts", color="gray", linestyle="dashed")
     ax.vlines(data_drifts, ymin=0, ymax=1, label="Data drifts", color="gray", linestyle="dotted", linewidth=1.75)
