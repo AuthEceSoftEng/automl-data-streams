@@ -51,10 +51,10 @@ def wilcoxon_test(pipeline_to_compare):
 
     # to run faster uncomment the method you want and the AML4S and comment all the above
 
-    # other_method = [0.9067, 0.83175, 0.7914, 0.8260495685021959, 0.7079320220580642] # for comparison with HoeffdingAdaptiveTreeClassifier with standard scaler
-    # other_method = [0.6272, 0.55735, 0.5692, 0.7937409784711772, 0.9443402201675697] # for comparison with AMFClassifier
-    # other_method = [0.8565, 0.7718, 0.77195, 0.8363686618961335, 0.9312320571692151] # for comparison with AMFClassifier with standard scaler
-    # AML4S = [0.9304859335038363, 0.8450639386189258, 0.8252685421994885, 0.8423593161222012, 0.9578270710105036]
+    # other_method = [0.9067, 0.83175, 0.7914, 0.7079320220580642, 0.32961702127659576] # for comparison with HoeffdingAdaptiveTreeClassifier with standard scaler
+    # other_method = [0.6272, 0.55735, 0.5692, 0.9443402201675697, 0.8180790273556231] # for comparison with AMFClassifier
+    # other_method = [0.8565, 0.7718, 0.77195, 0.9312320571692151, 0.8177386018237082] # for comparison with AMFClassifier with standard scaler
+    # AML4S = [0.9304859335038363, 0.8450639386189258, 0.8252685421994885, 0.9578270710105036, 0.8203667481662592]
 
     s = wilcoxon(other_method, AML4S, alternative="less", method="approx")
     print()
