@@ -3,7 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from LoanDataset.loandataset_2_class import LoanDataset
 
-imagespath = r"SET_THIS"
+imagespath = r"F:\Dropbox\ONGOING\IEEEAccess\images"
+figsize=(4.5, 6.2)
 
 ## CREATE DATASET
 # Number of data instances
@@ -33,7 +34,7 @@ for i, (x, y) in enumerate(dataset.take(datalimit)):
     #data.append({**x, "y": 1 if y else 0})
 df = pd.DataFrame.from_dict(data)
 df = df.iloc[::250, :]#df.sample(n = 300, random_state=42).sort_index()
-axes = df.plot(subplots=True, figsize=(4.5, 6), color="#1f77b4", legend=False)
+axes = df.plot(subplots=True, figsize=figsize, color="#1f77b4", legend=False)
 for c, ax in enumerate(axes):
 #    ax.axvline(400, color='red', linestyle='dashed')
 #    ax.legend(loc='center left')

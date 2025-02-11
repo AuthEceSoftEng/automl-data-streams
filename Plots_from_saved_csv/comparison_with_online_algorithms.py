@@ -5,8 +5,8 @@ from river import metrics
 import matplotlib.pyplot as plt
 from Functions.Evaluation import evaluation
 
-imagespath = r"SET_THIS"
-
+imagespath = r"F:\Dropbox\ONGOING\IEEEAccess\images"
+figsize=(9, 3.0)
 
 """ GATHER ALL THE DATA """
 for experiment_no in range(1, 4):
@@ -142,7 +142,7 @@ for experiment_no in range(1, 4):
     results = evaluates[0] # evaluates[0] is the accuracy, evaluates[1] is the average accuracy
     data_drifts, concept_drifts = data_drifts[-1], concept_drifts[-1] # drifts are only found for AML4S (which is the last method)
     
-    fig, ax = plt.subplots(figsize=(9, 3.2))
+    fig, ax = plt.subplots(figsize=figsize)
     
     ax.plot(results[-1], label = "AML4S", color = "#1f77b4", linestyle = "solid")
     
@@ -163,7 +163,7 @@ for experiment_no in range(1, 4):
     linestyles =['dotted', 'dashed', 'dashdot', (5, (10, 3)), (0, (3, 1, 1, 1)), (0, (5, 1)), (0, (3, 1, 1, 1, 1, 1)), (0, (5, 5)), 'solid'] #
     colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#000000'] #, '#bcbd22', '#17becf']
     
-    fig, ax = plt.subplots(figsize=(9, 3.2))
+    fig, ax = plt.subplots(figsize=figsize)
     
     for p, (pipeline, color, linestyle) in enumerate(zip(pipelines, colors, linestyles)):
         ax.plot(results[p], label = pipeline, color = color, linestyle = linestyle)
