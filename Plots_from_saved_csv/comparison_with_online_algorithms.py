@@ -5,7 +5,7 @@ from river import metrics
 import matplotlib.pyplot as plt
 from Functions.Evaluation import evaluation
 
-imagespath = r"F:\Dropbox\ONGOING\IEEEAccess\images"
+imagespath = r"SET_THIS"
 figsize=(9, 3.0)
 
 """ GATHER ALL THE DATA """

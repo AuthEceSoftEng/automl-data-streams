@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from LoanDataset.loandataset_2_class import LoanDataset
 
-imagespath = r"F:\Dropbox\ONGOING\IEEEAccess\images"
-figsize=(4.5, 6.2)
+imagespath = r"SET_THIS"
+figsize=(6.8, 6.2)
 
 ## CREATE DATASET
 # Number of data instances
@@ -63,6 +63,6 @@ axes[0].legend([cd, dd],['Concept drifts', 'Data drifts'], loc = 'upper center',
 axes[-1].set_xlabel("Data instances")
 axes[-1].set_xticks([0, 5000, 10000, 15000, 20000], [0, 5000, 10000, 15000, 20000])
 #    ax.xaxis.set_major_locator(ticker.NullLocator())
-plt.subplots_adjust(0.2, 0.1, 0.96, 0.93)
+plt.subplots_adjust(0.15, 0.1, 0.96, 0.93)
 plt.savefig(os.path.join(imagespath, "loandataset.pdf"))
 plt.show()
