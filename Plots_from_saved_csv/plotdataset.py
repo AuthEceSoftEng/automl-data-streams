@@ -1,4 +1,5 @@
 import os
+import matplotlib
 import pandas as pd
 import matplotlib.pyplot as plt
 from LoanDataset.loandataset_2_class import LoanDataset
@@ -36,6 +37,7 @@ df = pd.DataFrame.from_dict(data)
 df = df.iloc[::250, :]#df.sample(n = 300, random_state=42).sort_index()
 axes = df.plot(subplots=True, figsize=figsize, color="#1f77b4", legend=False)
 for c, ax in enumerate(axes):
+    ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, _: format(int(x), ',') if int(x) > 9999 else format(int(x))))
 #    ax.axvline(400, color='red', linestyle='dashed')
 #    ax.legend(loc='center left')
 
@@ -61,7 +63,7 @@ for c, ax in enumerate(axes):
 axes[0].legend([cd, dd],['Concept drifts', 'Data drifts'], loc = 'upper center', bbox_to_anchor=(0.5, 1.8), ncol=2)
 #plt.tight_layout()
 axes[-1].set_xlabel("Data instances")
-axes[-1].set_xticks([0, 5000, 10000, 15000, 20000], [0, 5000, 10000, 15000, 20000])
+axes[-1].set_xticks([0, 5000, 10000, 15000, 20000], ["0", "5000", "10,000", "15,000", "20,000"])
 #    ax.xaxis.set_major_locator(ticker.NullLocator())
 plt.subplots_adjust(0.15, 0.1, 0.96, 0.93)
 plt.savefig(os.path.join(imagespath, "loandataset.pdf"))

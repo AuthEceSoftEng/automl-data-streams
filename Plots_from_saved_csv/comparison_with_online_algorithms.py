@@ -1,5 +1,6 @@
 import os
 import pickle
+import matplotlib
 import pandas as pd
 from river import metrics
 import matplotlib.pyplot as plt
@@ -143,6 +144,7 @@ for experiment_no in range(1, 4):
     data_drifts, concept_drifts = data_drifts[-1], concept_drifts[-1] # drifts are only found for AML4S (which is the last method)
     
     fig, ax = plt.subplots(figsize=figsize)
+    ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, _: format(int(x), ',') if int(x) > 9999 else format(int(x))))
     
     ax.plot(results[-1], label = "AML4S", color = "#1f77b4", linestyle = "solid")
     
@@ -164,6 +166,7 @@ for experiment_no in range(1, 4):
     colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#000000'] #, '#bcbd22', '#17becf']
     
     fig, ax = plt.subplots(figsize=figsize)
+    ax.get_xaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, _: format(int(x), ',') if int(x) > 9999 else format(int(x))))
     
     for p, (pipeline, color, linestyle) in enumerate(zip(pipelines, colors, linestyles)):
         ax.plot(results[p], label = pipeline, color = color, linestyle = linestyle)
